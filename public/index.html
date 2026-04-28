@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Towers</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Lobby -->
+  <div id="lobby">
+    <div class="lobby-inner">
+      <h1>TYPING TOWERS</h1>
+      <p class="tagline">Type words to launch attacks. Destroy the enemy tower.</p>
+
+      <!-- Main actions -->
+      <div id="lobby-actions">
+        <button class="btn-primary" onclick="UI.startSolo('hard')">Play Solo</button>
+        <div class="divider">— or play online —</div>
+        <button class="btn-secondary" onclick="UI.createGame()">Create Online Game</button>
+        <div class="join-row">
+          <input id="code-input" type="text" maxlength="6" placeholder="ROOM CODE" autocomplete="off" spellcheck="false"
+            onkeydown="if(event.key==='Enter') UI.joinGame()">
+          <button class="btn-secondary" onclick="UI.joinGame()">Join Game</button>
+        </div>
+      </div>
+
+
+      <!-- Waiting for opponent -->
+      <div id="room-info" style="display:none">
+        <p>Share this code with your opponent:</p>
+        <div class="code-display" id="room-code-display"></div>
+        <button class="btn-invite" onclick="UI.inviteFriend()">Invite Friend</button>
+        <p class="waiting-text">Waiting for opponent<span class="dots"></span></p>
+        <button class="btn-back" onclick="location.reload()">← Cancel</button>
+      </div>
+
+      <div id="lobby-error" class="error-msg"></div>
+
+      <div class="how-to-play">
+        <h3>How to Play</h3>
+        <ul>
+          <li>Words fall on your side — type the first letter to target, then finish it</li>
+          <li>The height when you finish determines which floor gets hit</li>
+          <li>Aim for already-damaged floors to break through faster</li>
+          <li>Three attack types based on word length (see legend in-game)</li>
+          <li><strong>Solo:</strong> one wrong key and the word is gone — no second chances</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game screen -->
+  <div id="game-screen" style="display:none">
+    <canvas id="canvas"></canvas>
+    <div id="type-display">
+      <span id="typed-so-far"></span><span class="cursor-blink">|</span>
+    </div>
+  </div>
+
+  <script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -4,8 +4,6 @@ A fast-paced multiplayer typing game. Type falling words to launch attacks — a
 
 ## Play
 
-Live on [CrazyGames](https://www.crazygames.com)
-
 ## How it works
 
 - Words fall on your side of the screen — type the first letter to lock on, finish it to fire
